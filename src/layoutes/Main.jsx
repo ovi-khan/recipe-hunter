@@ -7,10 +7,12 @@ import ChefCard from '../pages/Shared/ChefCard/ChefCard';
 
 const Main = () => {
     return (
-        <div className='mx-10'>
+        <div className=''>
             <Header></Header>
+            <div className='mx-10'>
             <Banner></Banner>
             <ChefCard></ChefCard>
+            </div>
             <Footer></Footer>
             <Outlet></Outlet>  
         </div>
