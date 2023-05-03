@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   sendEmailVerification,
+  signInWithPopup,
   updateCurrentUser,
 } from "firebase/auth";
 import app from "../../../firebase/firebase.config";
@@ -18,30 +20,45 @@ const SignUp = () => {
     event.preventDefault();
     setSuccess("");
     setError("");
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const name = event.target.name.value;
+    const form = event.target
+    const email = form.email.value;
+    const password = form.password.value;
+    const name = form.name.value;
     console.log(name, email, password);
     // if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
     //   setError("Ensure string has two uppercase letters.");
     //   return;
     // }
     createUserWithEmailAndPassword(auth, email, password)
-      .then((result) => {
+      .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser);
         setError("");
         event.target.reset();
-        setSuccess("user has created successfully");
-        sendEmailVerification(result.user);
+        setSuccess("user has been created successfully");
+        // sendEmailVerification(result.user);
         //  updateCurrentUser(result.user, name)
-        updataUserData(result.user, name);
+        // updataUserData(result.user, name);
       })
       .catch((error) => {
         setError(error.message);
         console.error(error);
       });
   };
+
+
+  const handleGoogleSignIn = () => {
+    const provider = new GoogleAuthProvider()
+    signInWithPopup(auth, provider)
+    .then(result => {
+      const user = result.user
+      console.log(user)
+    })
+    .catch(error => {
+      console.log(error.message)
+    })
+  }
+
   const handleEmailChange = (event) => {
     console.log(event.target.value);
     // setEmail(event.target.value);
@@ -106,13 +123,13 @@ const SignUp = () => {
           required
         />
         <br />
+        <p className="text-red-800 pb-3 font-semibold">{ error }</p>
+        <p className="text-green-600 pb-3 font-semibold">{success}</p>
         <input
           className="bg-orange-400 hover:bg-orange-700 px-8 py-2 rounded-lg font-bold"
           type="submit"
           value="Register Now"
         />
-        <p className="text-danger">{{ error }}</p>
-        <p className="text-success">{{ success }}</p>
         <p className="">
           <small>
             If you already registred, please{" "}
@@ -121,6 +138,10 @@ const SignUp = () => {
             </Link>
           </small>
         </p>
+
+        <button onClick={handleGoogleSignIn} className="bg-emerald-700 px-20 py-2 rounded-lg font-bold">Google Sign In</button>
+
+
       </form>
     </div>
   );
