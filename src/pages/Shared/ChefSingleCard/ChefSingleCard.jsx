@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ChefSingleCard = ({ chefSingleData }) => {
     console.log('the data is',  chefSingleData)
@@ -24,13 +25,13 @@ const ChefSingleCard = ({ chefSingleData }) => {
           <p>Number of recipes: {numberOfRecipes}</p>
           <p>Likes: {likes}</p>
           <div className="card-actions justify-center">
-            <a
+            <Link to={`/chefDetails/${id}`}
               href={viewRecipesButton}
               className="btn bg-orange-500 hover:bg-orange-900"
               role="button"
             >
               View Recipes
-            </a>
+            </Link>
           </div>
         </div>
       </div>

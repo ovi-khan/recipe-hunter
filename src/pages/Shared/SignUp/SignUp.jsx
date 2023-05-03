@@ -152,7 +152,7 @@ const SignUp = () => {
           </small>
         </p>
 
-        <button onClick={handleGoogleSignIn} className="bg-emerald-700 px-20 py-2 rounded-lg font-bold">Google Sign In</button>
+        <button onClick={handleGoogleSignIn} className="bg-emerald-700 px-20 py-2 rounded-lg font-bold mt-5">Google Sign In</button>
         <button onClick={handleGitHubSignIn} className="bg-emerald-700 px-20 py-2 rounded-lg font-bold mt-5">Github Sign In</button>
 
 

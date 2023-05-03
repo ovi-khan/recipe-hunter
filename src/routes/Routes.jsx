@@ -5,6 +5,7 @@ import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 import SignUp from "../pages/Shared/SignUp/SignUp";
 import Blog from "../pages/Shared/Blog/Blog";
 import Login from "../pages/Shared/Login/Login";
+import ChefDetails from "../pages/Shared/ChefDetails/ChefDetails";
 
 
 export const router = createBrowserRouter([
@@ -16,6 +17,15 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: 'chefDetails',
+                element: <ChefDetails></ChefDetails>
+            },     
+            {
+                path: '/chefDetails/:id',
+                element: <ChefDetails></ChefDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/chefData/${params.id}`)
             },
             {
                 path: 'signUp',
