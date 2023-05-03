@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   GithubAuthProvider,
@@ -14,6 +14,8 @@ import app from "../../../firebase/firebase.config";
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider()
 const gitHubProvider = new GithubAuthProvider()
+
+// const { signUpUser } = useContext()
 
 const SignUp = () => {
   const [error, setError] = useState("");
