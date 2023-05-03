@@ -14,21 +14,19 @@ const ChefSingleCard = ({ chefSingleData }) => {
 
   return (
     <div>
-      <h1>{id}</h1>
-      <h1>{chefName}</h1>
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
         <figure>
-          <img src={chefPicture} alt={`Portrait of ${chefName}`} />
+          <img className='h-64 w-96 object-cover' src={chefPicture} alt={`Portrait of ${chefName}`} />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{chefName}</h2>
           <p>Years of experience: {yearsOfExperience}</p>
           <p>Number of recipes: {numberOfRecipes}</p>
           <p>Likes: {likes}</p>
-          <div className="card-actions justify-end">
+          <div className="card-actions justify-center">
             <a
               href={viewRecipesButton}
-              className="btn btn-primary"
+              className="btn bg-orange-500 hover:bg-orange-900"
               role="button"
             >
               View Recipes

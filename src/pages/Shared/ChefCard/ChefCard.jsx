@@ -12,7 +12,7 @@ const ChefCard = () => {
 
   return (
     <>
-      <div className="grid lg:grid-cols-3">
+      <div className="grid lg:grid-cols-3 gap-5">
         {chefData.map((chefSingleData) => (
           <ChefSingleCard
             key={chefSingleData.id}

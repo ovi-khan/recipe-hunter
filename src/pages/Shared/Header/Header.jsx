@@ -13,6 +13,7 @@ const Header = () => {
       <div className="gap-5">
         <div className="">
             <Link className="ms-5" to='/'>Home</Link>
+            <Link className="ms-5" to='/signUp'>Sign Up</Link>
             <Link className="ms-5" to='/blog'>Blog</Link>
         </div>
         <div className="">
