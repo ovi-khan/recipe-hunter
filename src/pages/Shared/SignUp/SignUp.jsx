@@ -19,7 +19,7 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   // const [email, setEmail] = useState('')
-  const handleSubmit = (event) => {
+  const handleSignUp = (event) => {
     event.preventDefault();
     setSuccess("");
     setError("");
@@ -45,7 +45,7 @@ const SignUp = () => {
       })
       .catch((error) => {
         setError(error.message);
-        console.error(error);
+        // console.error(error);
       });
   };
 
@@ -105,7 +105,7 @@ const SignUp = () => {
   return (
     <div className="w-[30%] mx-auto p-10 mt-10 bg-red-200 rounded-lg shadow-lg shadow-red-400">
       <h1 className="text-3xl font-bold text-center mb-5">Register Here</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSignUp}>
         <input
           className="bg-orange-800  mt-3 mb-3 px-14 py-2 rounded-lg"
           onChange={handleEmailChange}
