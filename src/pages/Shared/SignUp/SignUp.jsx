@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
@@ -11,6 +12,8 @@ import {
 import app from "../../../firebase/firebase.config";
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider()
+const gitHubProvider = new GithubAuthProvider()
 
 const SignUp = () => {
   const [error, setError] = useState("");
@@ -48,13 +51,23 @@ const SignUp = () => {
 
 
   const handleGoogleSignIn = () => {
-    const provider = new GoogleAuthProvider()
-    signInWithPopup(auth, provider)
+    signInWithPopup(auth, googleProvider)
     .then(result => {
       const user = result.user
       console.log(user)
     })
     .catch(error => {
+      console.log(error.message)
+    })
+  }
+
+  const handleGitHubSignIn = () => {
+    signInWithPopup(auth, gitHubProvider)
+    .then(result => {
+      const user = result.user
+      console.log(user)
+    })
+    .then(error => {
       console.log(error.message)
     })
   }
@@ -140,6 +153,7 @@ const SignUp = () => {
         </p>
 
         <button onClick={handleGoogleSignIn} className="bg-emerald-700 px-20 py-2 rounded-lg font-bold">Google Sign In</button>
+        <button onClick={handleGitHubSignIn} className="bg-emerald-700 px-20 py-2 rounded-lg font-bold mt-5">Github Sign In</button>
 
 
       </form>
