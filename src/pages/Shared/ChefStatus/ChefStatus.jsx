@@ -3,7 +3,7 @@ import React from "react";
 const ChefStatus = () => {
   return (
     <div>
-        <h1 className="text-center text-5xl font-bold mb-20">Economic Growth</h1>
+        <h1 className="text-center text-5xl font-bold mb-20">Our Current Client</h1>
         <div className="stats shadow w-full mb-20">
       <div className="stat place-items-center">
         <div className="stat-title">Downloads</div>
