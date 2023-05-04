@@ -6,6 +6,7 @@ import SignUp from "../pages/Shared/SignUp/SignUp";
 import Blog from "../pages/Shared/Blog/Blog";
 import Login from "../pages/Shared/Login/Login";
 import ChefDetails from "../pages/Shared/ChefDetails/ChefDetails";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -20,11 +21,14 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'chefDetails',
-                element: <ChefDetails></ChefDetails>
+                element: 
+                    <ChefDetails></ChefDetails>
             },     
             {
                 path: '/chefDetails/:id',
-                element: <ChefDetails></ChefDetails>,
+                element: <PrivateRoute>
+                    <ChefDetails></ChefDetails>
+                </PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/chefData/${params.id}`)
             },
             {

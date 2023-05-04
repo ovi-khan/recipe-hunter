@@ -3,25 +3,26 @@ import { Link } from "react-router-dom";
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
-  createUserWithEmailAndPassword,
+  // createUserWithEmailAndPassword,
   getAuth,
-  sendEmailVerification,
+  // sendEmailVerification,
   signInWithPopup,
-  updateCurrentUser,
+  // updateCurrentUser,
 } from "firebase/auth";
 import app from "../../../firebase/firebase.config";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider()
 const gitHubProvider = new GithubAuthProvider()
 
-// const { signUpUser } = useContext()
 
 const SignUp = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   // const [email, setEmail] = useState('')
   const handleSignUp = (event) => {
+    const { signUpUser } = useContext(AuthContext)
     event.preventDefault();
     setSuccess("");
     setError("");
@@ -34,7 +35,10 @@ const SignUp = () => {
     //   setError("Ensure string has two uppercase letters.");
     //   return;
     // }
-    createUserWithEmailAndPassword(auth, email, password)
+
+    // createUserWithEmailAndPassword(auth, email, password)
+    if(name, email, password) {
+      signUpUser(name, email, password)
       .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser);
@@ -49,6 +53,7 @@ const SignUp = () => {
         setError(error.message);
         // console.error(error);
       });
+    }      
   };
 
 

@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import app from '../../../firebase/firebase.config';
+import { AuthContext } from '../../../provider/AuthProvider';
 
 const auth = getAuth(app)
 
 const Login = () => {
-    const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
-
-    const handleLogIn = event => {
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
+  
+  const handleLogIn = event => {
+      const { logIn } = useContext(AuthContext)
         event.preventDefault()
         const form = event.target
         const email = form.email.value
         const password = form.password.value
         console.log(email, password)
 
-        signInWithEmailAndPassword(auth, email, password)
-        .then(result => {
+        // signInWithEmailAndPassword(auth, email, password)
+        if(email, password) {
+          logIn(email, password)
+          .then(result => {
             const loggedUser = result.user
             console.log(loggedUser)
             setError("")
@@ -25,9 +29,12 @@ const Login = () => {
             setSuccess("User logged in successfully")
         })
         .catch(error => {
-            setError(error.message)
-            console.log(error.message)
-        })
+          setError(error.message)
+          console.log(error.message)
+      })
+        }
+        
+        
     }
 
     return (

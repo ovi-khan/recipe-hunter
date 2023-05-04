@@ -4,8 +4,15 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider"
 
 const Header = () => {
-  const { user } = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext)
   console.log(user?.email)
+  const handleLogOut = () => {
+    logOut()
+    .then()
+    .catch(error => {
+      console.log(error.message)
+    })
+  }
   return (
     <div className="navbar bg-base-100 bg-orange-500 px-8">
       <div className="flex-1">
@@ -19,7 +26,7 @@ const Header = () => {
             <Link className="ms-5" to='/chefDetails'>Chef Details</Link>
             <Link className="ms-5" to='/signUp'>Sign Up</Link>
             { user?.email ? (
-                 <button className="btn">Log Out</button>
+                 <button onClick={handleLogOut} className="btn">Log Out</button>
             ):(
                 <Link className="ms-5" to='/login'>Log in</Link>
               )}
