@@ -8,7 +8,9 @@ const Main = () => {
         <div className=''>
             <Header></Header>          
             <Outlet></Outlet>  
+            <div className='mt-48'>
             <Footer></Footer>
+            </div>
         </div>
     );
 };
