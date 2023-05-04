@@ -3,11 +3,8 @@ import { Link } from "react-router-dom";
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
-  // createUserWithEmailAndPassword,
   getAuth,
-  // sendEmailVerification,
   signInWithPopup,
-  // updateCurrentUser,
 } from "firebase/auth";
 import app from "../../../firebase/firebase.config";
 import { AuthContext } from "../../../provider/AuthProvider";
@@ -20,7 +17,6 @@ const gitHubProvider = new GithubAuthProvider()
 const SignUp = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  // const [email, setEmail] = useState('')
   const handleSignUp = (event) => {
     const { signUpUser } = useContext(AuthContext)
     event.preventDefault();
@@ -31,10 +27,13 @@ const SignUp = () => {
     const password = form.password.value;
     const name = form.name.value;
     console.log(name, email, password);
-    // if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
-    //   setError("Ensure string has two uppercase letters.");
-    //   return;
-    // }
+    if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+      setError("Ensure string has two uppercase letters.");
+      return;
+    }
+    else if (password < 6) {
+      setError('Password must be 6 Character')
+    }
 
     // createUserWithEmailAndPassword(auth, email, password)
     if(name, email, password) {
@@ -81,34 +80,12 @@ const SignUp = () => {
 
   const handleEmailChange = (event) => {
     console.log(event.target.value);
-    // setEmail(event.target.value);
   };
   const handlePasswordBlower = (event) => {
     console.log(event.target.value);
   };
 
   
-//   const sendVerificationEmail = (user) => {
-//     sendEmailVerification(user).then((result) => {
-//       console.log(result);
-//       alert("please verify your email address");
-//     });
-//   };
-
-
-//   const updataUserData = (user, name) => {
-//     updateProfile(user, {
-//       displayName: name,
-//     })
-//       .then(() => {
-//         console.log("user name updated");
-//       })
-//       .catch((error) => {
-//         setError(error.message);
-//         console.error(error.message);
-//       });
-//   };
-
   return (
     <div className="w-[30%] mx-auto p-10 mt-10 bg-red-200 rounded-lg shadow-lg shadow-red-400">
       <h1 className="text-3xl font-bold text-center mb-5">Register Here</h1>
