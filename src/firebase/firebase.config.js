@@ -4,13 +4,15 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
+console.log('environment variable', import.meta.env.VITE_PASS)
 const firebaseConfig = {
-  apiKey: "AIzaSyBqp53wdBZTOJbTX9QRt0ughTsMgCZW4No",
-  authDomain: "recipie-hunter.firebaseapp.com",
-  projectId: "recipie-hunter",
-  storageBucket: "recipie-hunter.appspot.com",
-  messagingSenderId: "640341303733",
-  appId: "1:640341303733:web:78be001e67803e347439fc"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
