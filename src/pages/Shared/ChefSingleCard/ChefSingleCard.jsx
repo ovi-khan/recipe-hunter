@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ChefSingleCard = ({ chefSingleData }) => {
-    console.log('the data is',  chefSingleData)
+    // console.log('the data is',  chefSingleData)
   const {
     id,
     chefName,

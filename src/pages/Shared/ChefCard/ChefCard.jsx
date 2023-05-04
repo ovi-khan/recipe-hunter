@@ -4,7 +4,7 @@ import ChefSingleCard from "../ChefSingleCard/ChefSingleCard";
 const ChefCard = () => {
   const [chefData, setChefData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/chefData")
+    fetch("https://b7a10-chef-recipe-hunter-server-side-ovi-khan-ovi-khan.vercel.app/chefData")
       .then((res) => res.json())
       .then((data) => setChefData(data))
       .catch((error) => console.error(error));
