@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import logoimg from "../../../../public/images/logoimg/thaiFoodLogo.jpg"
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider"
+import ActiveLink from "../ActiveLink/ActiveLink";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
@@ -21,18 +22,18 @@ const Header = () => {
         </Link>
       </div>
       <div className="gap-5">
-        <div className="">
-            <Link className="ms-5" to='/'>Home</Link>
-            <Link className="ms-5" to='/chefDetails'>Chef Details</Link>
-            <Link className="ms-5" to='/signUp'>Sign Up</Link>
+        <ul className="gap-10 flex flex-row">
+        <ActiveLink className="ms-5" to='/'>Home</ActiveLink>
+        <ActiveLink className="ms-5" to='/chefDetails'>Chef Details</ActiveLink>
+            <ActiveLink className="ms-5" to='/signUp'>Sign Up</ActiveLink>
             { user?.email ? (
                  <button onClick={handleLogOut} className="btn">Log Out</button>
             ):(
-                <Link className="ms-5" to='/login'>Log in</Link>
+                <ActiveLink className="ms-5" to='/login'>Log in</ActiveLink>
               )}
               {/* <li>{user?.email}</li>  */}
-            <Link className="ms-5" to='/blog'>Blog</Link>
-        </div>
+            <ActiveLink className="ms-5" to='/blog'>Blog</ActiveLink>
+        </ul>
         <div className="">
          { user && <label  className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
