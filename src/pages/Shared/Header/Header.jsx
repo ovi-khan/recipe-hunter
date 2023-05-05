@@ -33,6 +33,9 @@ const Header = () => {
             <ActiveLink className="ms-5" to="/chefDetails">
               Chef Details
             </ActiveLink>
+            <ActiveLink className="ms-5" to="/recipeData">
+              Recipe Data
+            </ActiveLink>
             <ActiveLink className="ms-5" to="/blog">
               Blog
             </ActiveLink>
